@@ -10,6 +10,9 @@ import {
 
 // Components
 import HomeView from '@/views/HomeView.vue';
+import StartScreen from '@/views/StartScreen.vue';
+import BauvorhabenAuswahl from '@/views/BauvorhabenAuswahl.vue';
+import BauvorhabenDetail from '@/views/BauvorhabenDetail.vue';
 
 // Pinia Store
 
@@ -21,7 +24,17 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home',
-    component: HomeView
+    component: StartScreen
+  },
+  {
+    path: '/bauvorhaben-auswahl',
+    name: 'BauvorhabenAuswahl',
+    component: BauvorhabenAuswahl
+  },
+  {
+    path: '/bauvorhaben/:id',
+    name: 'BauvorhabenDetail',
+    component: BauvorhabenDetail
   },
   {
     path: '/about',

@@ -69,47 +69,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-app :theme="isDark">
-    <v-navigation-drawer v-model="drawer" temporary>
-      <drawer-component />
-    </v-navigation-drawer>
-
-    <v-app-bar>
-      <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <v-app-bar-title tag="h1">{{ title }}</v-app-bar-title>
-      <v-spacer />
-      <app-bar-menu-component />
-      <v-progress-linear
-        v-show="loading"
-        :active="loading"
-        :indeterminate="progress === null"
-        :model-value="progress !== null ? progress : 0"
-        color="blue-accent-3"
-      />
-    </v-app-bar>
-
-    <v-main>
-      <router-view v-slot="{ Component, route }">
-        <!--transition :name="route.meta.transition as string || 'fade'"-->
-        <component :is="Component" :key="route.path" />
-        <!--/transition-->
-      </router-view>
-    </v-main>
-
-    <v-overlay v-model="loading" app class="justify-center align-center" persistent>
-      <v-progress-circular indeterminate size="64" />
-    </v-overlay>
-
-    <v-snackbar v-model="snackbarVisibility" @update:model-value="onSnackbarChanged">
-      {{ snackbarText }}
-      <template #actions>
-        <v-btn icon="mdi-close" @click="onSnackbarChanged" />
-      </template>
-    </v-snackbar>
-
-    <v-footer app elevation="3">
-      <span class="mr-5">2025 &copy;</span>
-    </v-footer>
+  <v-app>
+    <router-view></router-view>
   </v-app>
   <teleport to="head">
     <meta name="theme-color" :content="theme.computedThemes.value?.[isDark]?.colors?.primary ?? '#1976D2'" />

@@ -6,6 +6,9 @@
 import store from '@/store';
 import { createApp } from 'vue';
 
+// Leaflet CSS
+import 'leaflet/dist/leaflet.css';
+
 import App from '@/App.vue';
 import vuetify from '@/plugins/vuetify';
 import router from '@/router';
