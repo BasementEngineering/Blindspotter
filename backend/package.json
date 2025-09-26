@@ -10,6 +10,7 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "hono": "^4.9.8"
+    "hono": "^4.9.8",
+    "purify-ts": "^2.1.2"
   }
 }

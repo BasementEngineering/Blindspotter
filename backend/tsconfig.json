@@ -8,7 +8,7 @@
     "types": ["bun-types"],
     "baseUrl": ".", 
     "paths": {
-      "@routes/*": ["src/routes/*"]
+      "@routes/*": ["src/infra/routes/*"]
     }
   },
   "include": ["src/**/*.ts", "main.ts"]
