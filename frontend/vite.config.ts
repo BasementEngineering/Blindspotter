@@ -97,11 +97,11 @@ export default defineConfig(({ command, mode }): UserConfig => {
           plugins: [
             mode === 'analyze'
               ? // rollup-plugin-visualizer
-                // https://github.com/btd/rollup-plugin-visualizer
-                visualizer({
-                  open: true,
-                  filename: 'dist/stats.html'
-                })
+              // https://github.com/btd/rollup-plugin-visualizer
+              visualizer({
+                open: true,
+                filename: 'dist/stats.html'
+              })
               : undefined
           ]
         }
@@ -110,6 +110,14 @@ export default defineConfig(({ command, mode }): UserConfig => {
     esbuild: {
       // Drop console when production build.
       drop: command === 'serve' ? [] : ['console']
+    },
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3000',
+          changeOrigin: true
+        }
+      }
     }
   };
 
