@@ -1,0 +1,10 @@
+{
+  "name": "Blindspotter",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"bun run --watch backend/main.ts\" \"cd frontend && bun run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
