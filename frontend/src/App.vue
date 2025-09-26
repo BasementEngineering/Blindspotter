@@ -73,7 +73,7 @@ onMounted(() => {
     <router-view></router-view>
   </v-app>
   <teleport to="head">
-    <meta name="theme-color" :content="theme.computedThemes.value?.[isDark]?.colors?.primary ?? '#1976D2'" />
+    <meta name="theme-color" :content="theme.computedThemes.value?.[isDark]?.colors?.primary ?? '#006E90'" />
     <link rel="icon" :href="logo" type="image/svg+xml" />
   </teleport>
 </template>

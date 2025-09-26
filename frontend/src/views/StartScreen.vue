@@ -3,9 +3,9 @@
     <v-row justify="center" align="center" class="fill-height">
       <v-col cols="12" sm="6" md="4" class="text-center">
         <div class="logo-container">
-          <v-icon 
-            icon="mdi-eye-circle" 
-            size="64" 
+          <v-icon
+            icon="mdi-eye-circle"
+            size="64"
             color="primary"
             class="logo-icon"
           ></v-icon>
@@ -14,7 +14,15 @@
           </h1>
           <p class="tagline">Perspektiven sichtbar machen</p>
         </div>
-        
+
+        <v-btn color="primary" size="large" to="/bauvorhaben-hinzufuegen">Bauvorhaben hinzufügen</v-btn>
+
+        <div class="d-flex align-center my-4">
+          <v-divider class="flex-grow-1" />
+          <span class="mx-4 text-medium-emphasis">oder</span>
+          <v-divider class="flex-grow-1" />
+        </div>
+
         <v-select
           v-model="selectedBauvorhaben"
           :items="bauvorhabenItems"
@@ -23,9 +31,9 @@
           placeholder="Wählen Sie ein Bauvorhaben..."
           class="mb-4"
         ></v-select>
-        
+
         <v-btn
-          v-if="selectedBauvorhaben"
+          :disabled="!selectedBauvorhaben"
           color="primary"
           size="large"
           @click="showDetails"
@@ -66,7 +74,7 @@ const showDetails = () => {
 }
 
 .logo-container {
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 }
 
 .logo-icon {
@@ -82,7 +90,7 @@ const showDetails = () => {
 }
 
 .blind {
-  color: #1976d2;
+  color: #006E90;
 }
 
 .spotter {
