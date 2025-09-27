@@ -237,7 +237,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import L from 'leaflet';
 import { mockBauvorhaben } from '@/data/mockBauvorhaben';
@@ -251,7 +251,7 @@ const mapContainer = ref<HTMLElement>();
 let map: L.Map | null = null;
 
 // SSE Connection
-const { connectionStatus, connect } = useSSE();
+const { connectionStatus, messages, latestMessage, connect } = useSSE();
 
 // Modal State für Bewegungsprofil Vergleich
 const bewegungsprofilModalOpen = ref(false);
@@ -509,6 +509,15 @@ const getImpactText = (level?: string) => {
     default: return '';
   }
 };
+
+// Watch for new SSE messages
+watch(latestMessage, (newMessage) => {
+  if (newMessage) {
+    console.log('SSE message:', newMessage)
+    // Handle the message data here
+    // For example, update people statistics, show notifications, etc.
+  }
+})
 
 onMounted(() => {
   if (bauvorhaben.value) {

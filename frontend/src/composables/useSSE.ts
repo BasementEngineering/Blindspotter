@@ -4,6 +4,8 @@ export function useSSE(endpoint: string = '/api/events/stream') {
   let eventSource: EventSource | null = null
   let reconnectTimeout: number | null = null
   const connectionStatus = ref<'disconnected' | 'connecting' | 'connected'>('disconnected')
+  const messages = ref<any[]>([])
+  const latestMessage = ref<any>(null)
 
   const connect = () => {
     if (eventSource) {
@@ -13,7 +15,7 @@ export function useSSE(endpoint: string = '/api/events/stream') {
     connectionStatus.value = 'connecting'
     console.log('Connecting to SSE...')
 
-    // В development режиме используем прямой URL к backend
+    // DEV-mode backend url
     const sseUrl = import.meta.env.DEV
       ? `http://localhost:3000${endpoint}`
       : endpoint
@@ -57,8 +59,22 @@ export function useSSE(endpoint: string = '/api/events/stream') {
       try {
         const data = JSON.parse(event.data)
         console.log('SSE Custom Message:', data)
+
+        // Store message data
+        messages.value.push(data)
+        latestMessage.value = data
+
+        // Keep only last 100 messages to prevent memory issues
+        if (messages.value.length > 100) {
+          messages.value = messages.value.slice(-100)
+        }
       } catch (error) {
         console.log('SSE Custom Message (raw):', event.data)
+
+        // Store raw message if JSON parsing fails
+        const rawData = { raw: event.data, timestamp: new Date().toISOString() }
+        messages.value.push(rawData)
+        latestMessage.value = rawData
       }
     })
 
@@ -106,6 +122,8 @@ export function useSSE(endpoint: string = '/api/events/stream') {
 
   return {
     connectionStatus,
+    messages,
+    latestMessage,
     connect,
     disconnect
   }
