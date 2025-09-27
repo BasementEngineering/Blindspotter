@@ -32,7 +32,7 @@ function profilAbschicken() {
 
 function getDto() {
   return JSON.stringify({
-    tagesablauf: {
+    daily_routines: {
       start: tagesablaufDaten.value.start,
       ende: tagesablaufDaten.value.ende,
       ablauf: tagesablaufDaten.value.tagesablauf
