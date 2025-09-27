@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import TagesablaufErstellen from './TagesablaufErstellen.vue';
-import ProfilErstellen from './ProfilErstellen.vue';
+import TagesablaufErstellen from '../components/TagesablaufErstellen.vue';
+import ProfilErstellen from '../components/ProfilErstellen.vue';
 
 interface Bewegungsprofil {
   startzeit: string;
