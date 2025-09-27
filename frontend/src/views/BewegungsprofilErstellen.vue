@@ -51,8 +51,24 @@ function onProfilUpdate(daten: ProfilDaten) {
   profilDaten.value = daten;
 }
 
-function profilAbschicken() {
+async function profilAbschicken() {
+  try {
+    const response = await fetch('/api/profile', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: getDto()
+    });
 
+    if (response.ok) {
+      console.log('Profil erfolgreich abgeschickt');
+    } else {
+      console.error('Fehler beim Abschicken des Profils:', response.statusText);
+    }
+  } catch (error) {
+    console.error('Netzwerkfehler:', error);
+  }
 }
 
 function getDto() {
