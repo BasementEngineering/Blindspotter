@@ -4,7 +4,7 @@
 <template>
   <div class="page-center">
     <div class="container">
-      <h1 class="title">Profil erstellen</h1>
+      <h2 class="title">Profil erstellen</h2>
     </div>
   </div>
 </template>
