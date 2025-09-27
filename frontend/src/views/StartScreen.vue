@@ -14,15 +14,13 @@
           </h1>
           <p class="tagline">Perspektiven sichtbar machen</p>
         </div>
-
-        <v-btn color="primary" size="large" to="/bauvorhaben-hinzufuegen">Bauvorhaben hinzufügen</v-btn>
+<v-btn color="primary" size="large" to="/bauvorhaben-hinzufuegen">Bauvorhaben hinzufügen</v-btn>
 
         <div class="d-flex align-center my-4">
           <v-divider class="flex-grow-1" />
           <span class="mx-4 text-medium-emphasis">oder</span>
           <v-divider class="flex-grow-1" />
         </div>
-
         <v-select
           v-model="selectedBauvorhaben"
           :items="bauvorhabenItems"
@@ -63,7 +61,10 @@ const showDetails = () => {
     // Für Demo-Zwecke leiten wir zu einer festen ID weiter
     const id = selectedBauvorhaben.value === 'Bauvorhaben A' ? '1' : '2';
     console.log('Navigating to:', `/bauvorhaben/${id}`, 'Selected:', selectedBauvorhaben.value);
-    router.push(`/bauvorhaben/${id}`);
+    router.push({
+      path: `/bauvorhaben/${id}`,
+      query: { name: selectedBauvorhaben.value }
+    });
   }
 };
 </script>

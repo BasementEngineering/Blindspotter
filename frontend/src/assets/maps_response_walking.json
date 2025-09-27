@@ -1,0 +1,356 @@
+{
+  "geocoded_waypoints": [
+    {
+      "geocoder_status": "OK",
+      "place_id": "ChIJsxS-ssO6uUcRJCC7ZiHI0rg",
+      "types": [
+        "premise",
+        "street_address"
+      ]
+    },
+    {
+      "geocoder_status": "OK",
+      "place_id": "ChIJuTWKita6uUcR_vkGdTnIHpo",
+      "types": [
+        "street_address",
+        "subpremise"
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "bounds": {
+        "northeast": {
+          "lat": 51.9634805,
+          "lng": 7.637175799999999
+        },
+        "southwest": {
+          "lat": 51.95044919999999,
+          "lng": 7.624381100000001
+        }
+      },
+      "copyrights": "Powered by Google, ©2025 Google",
+      "legs": [
+        {
+          "distance": {
+            "text": "2.1 km",
+            "value": 2071
+          },
+          "duration": {
+            "text": "28 mins",
+            "value": 1707
+          },
+          "end_address": "Albersloher Weg 14, 48155 Münster, Germany",
+          "end_location": {
+            "lat": 51.95044919999999,
+            "lng": 7.637175799999999
+          },
+          "start_address": "St.-Paulus-Dom Münster, Dompl. 28, 48143 Münster, Germany",
+          "start_location": {
+            "lat": 51.9634805,
+            "lng": 7.6252437
+          },
+          "steps": [
+            {
+              "distance": {
+                "text": "77 m",
+                "value": 77
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 60
+              },
+              "end_location": {
+                "lat": 51.9632189,
+                "lng": 7.624507899999999
+              },
+              "html_instructions": "Head <b>south</b> on <b>Horsteberg</b> toward <b>Dompl.</b>",
+              "polyline": {
+                "points": "wbd|Hwhpm@XA@?D?D@@@@B@F@P?@@P@X?J?@?L@F?HAT"
+              },
+              "start_location": {
+                "lat": 51.9634805,
+                "lng": 7.6252437
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "31 m",
+                "value": 31
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 26
+              },
+              "end_location": {
+                "lat": 51.9629458,
+                "lng": 7.624381100000001
+              },
+              "html_instructions": "Turn <b>left</b> onto <b>Dompl.</b>",
+              "maneuver": "turn-left",
+              "polyline": {
+                "points": "cad|Hedpm@TD^R"
+              },
+              "start_location": {
+                "lat": 51.9632189,
+                "lng": 7.624507899999999
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "77 m",
+                "value": 77
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 68
+              },
+              "end_location": {
+                "lat": 51.9625828,
+                "lng": 7.625305999999999
+              },
+              "html_instructions": "Turn <b>left</b> toward <b>Dompl.</b>",
+              "maneuver": "turn-left",
+              "polyline": {
+                "points": "m_d|Hkcpm@Pk@Rq@^qABI"
+              },
+              "start_location": {
+                "lat": 51.9629458,
+                "lng": 7.624381100000001
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "52 m",
+                "value": 52
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 42
+              },
+              "end_location": {
+                "lat": 51.96215429999999,
+                "lng": 7.625244799999999
+              },
+              "html_instructions": "Turn <b>right</b> toward <b>Dompl.</b>",
+              "maneuver": "turn-right",
+              "polyline": {
+                "points": "c}c|Heipm@rAP@C"
+              },
+              "start_location": {
+                "lat": 51.9625828,
+                "lng": 7.625305999999999
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "63 m",
+                "value": 63
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 53
+              },
+              "end_location": {
+                "lat": 51.9620369,
+                "lng": 7.626117799999999
+              },
+              "html_instructions": "Turn <b>left</b> onto <b>Dompl.</b>",
+              "maneuver": "turn-left",
+              "polyline": {
+                "points": "mzc|Hwhpm@H?@WDwAB_A"
+              },
+              "start_location": {
+                "lat": 51.96215429999999,
+                "lng": 7.625244799999999
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "0.2 km",
+                "value": 156
+              },
+              "duration": {
+                "text": "2 mins",
+                "value": 122
+              },
+              "end_location": {
+                "lat": 51.960664,
+                "lng": 7.625963199999999
+              },
+              "html_instructions": "Turn <b>right</b> onto <b>Geisbergweg</b>",
+              "maneuver": "turn-right",
+              "polyline": {
+                "points": "wyc|Hgnpm@LBLBNBTBD@B@X@@?N@RDB?RDL?X?D?D?ZA^A"
+              },
+              "start_location": {
+                "lat": 51.9620369,
+                "lng": 7.626117799999999
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "12 m",
+                "value": 12
+              },
+              "duration": {
+                "text": "1 min",
+                "value": 10
+              },
+              "end_location": {
+                "lat": 51.9606538,
+                "lng": 7.6261443
+              },
+              "html_instructions": "Turn <b>left</b> onto <b>Rothenburg</b><div style=\"font-size:0.9em\">May be closed at certain times or days</div>",
+              "maneuver": "turn-left",
+              "polyline": {
+                "points": "cqc|Hgmpm@@c@"
+              },
+              "start_location": {
+                "lat": 51.960664,
+                "lng": 7.625963199999999
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "0.4 km",
+                "value": 400
+              },
+              "duration": {
+                "text": "5 mins",
+                "value": 325
+              },
+              "end_location": {
+                "lat": 51.9571255,
+                "lng": 7.6267279
+              },
+              "html_instructions": "Turn <b>right</b> onto <b>Königsstraße</b>",
+              "maneuver": "turn-right",
+              "polyline": {
+                "points": "aqc|Hknpm@f@CRG\\Eb@C`@@B@D?PBJ@NDLBb@JJB^JH?F?PE\\CNC@?VGVGf@OJGh@ULINGLGNID?FCBAHAPAPAZONC"
+              },
+              "start_location": {
+                "lat": 51.9606538,
+                "lng": 7.6261443
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "0.1 km",
+                "value": 107
+              },
+              "duration": {
+                "text": "2 mins",
+                "value": 91
+              },
+              "end_location": {
+                "lat": 51.9562532,
+                "lng": 7.6266324
+              },
+              "html_instructions": "Continue onto <b>Ludgeristraße</b>",
+              "polyline": {
+                "points": "a{b|Harpm@\\FFBzAJXGRB"
+              },
+              "start_location": {
+                "lat": 51.9571255,
+                "lng": 7.6267279
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "0.4 km",
+                "value": 367
+              },
+              "duration": {
+                "text": "5 mins",
+                "value": 315
+              },
+              "end_location": {
+                "lat": 51.9543001,
+                "lng": 7.6305437
+              },
+              "html_instructions": "At the roundabout, take the <b>3rd</b> exit onto <b>Hafenstraße</b>",
+              "maneuver": "roundabout-right",
+              "polyline": {
+                "points": "qub|Hmqpm@@OBODM@EBEBE@EBCDGBELILGPLB?B?D@LSDBBBB@@BDB@BBEHQJUNa@BIFWPo@?ANq@Lg@Pq@FSDYXmAFUBIN]Lk@Ha@T{@FYDUDQ"
+              },
+              "start_location": {
+                "lat": 51.9562532,
+                "lng": 7.6266324
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "0.4 km",
+                "value": 430
+              },
+              "duration": {
+                "text": "6 mins",
+                "value": 342
+              },
+              "end_location": {
+                "lat": 51.9529094,
+                "lng": 7.6360776
+              },
+              "html_instructions": "Slight <b>left</b> to stay on <b>Hafenstraße</b>",
+              "maneuver": "turn-slight-left",
+              "polyline": {
+                "points": "kib|H{iqm@@O@KJi@Nu@BQBQBQ@QD[TmBLy@D]@QTa@BEHULOf@iAN]FKFOPa@FqABYNoC?EBm@@O@M@Q@S@s@"
+              },
+              "start_location": {
+                "lat": 51.9543001,
+                "lng": 7.6305437
+              },
+              "travel_mode": "WALKING"
+            },
+            {
+              "distance": {
+                "text": "0.3 km",
+                "value": 299
+              },
+              "duration": {
+                "text": "4 mins",
+                "value": 253
+              },
+              "end_location": {
+                "lat": 51.95044919999999,
+                "lng": 7.637175799999999
+              },
+              "html_instructions": "Turn <b>right</b> onto <b>Albersloher Weg</b><div style=\"font-size:0.9em\">Destination will be on the right</div>",
+              "maneuver": "turn-right",
+              "polyline": {
+                "points": "u`b|Holrm@L@JUDKFIJELEHBxA`@RPD@RFPBRDF?HCDAHEBCDEDIPc@l@w@R[ZONKHOHAJIZ]BC"
+              },
+              "start_location": {
+                "lat": 51.9529094,
+                "lng": 7.6360776
+              },
+              "travel_mode": "WALKING"
+            }
+          ],
+          "traffic_speed_entry": [],
+          "via_waypoint": []
+        }
+      ],
+      "overview_polyline": {
+        "points": "wbd|Hwhpm@`@AFBBJBd@@t@@PATTD^RPk@r@cCBIrAP@CH?FoBB_ALB\\FZDn@Dx@J`AA^A@c@f@CRG`AId@Br@J|A^P?n@I`ASr@Wv@_@r@Yf@IPAZONC\\FFBzAJXGRBD_@FSLUHMZQTLH@LSDBFDFF@BBEHQZw@\\sAv@_Dj@gC\\iA^}ALo@Fa@`@}BNqAj@wEXg@Ve@fAcCPa@FqARiDFqABe@@s@L@Pa@ROLEHBxA`@RPXHd@HPCNGHIVm@`AsAj@[HOHAf@g@BC"
+      },
+      "summary": "Hafenstraße",
+      "warnings": [
+        "Walking directions are in beta. Use caution – This route may be missing sidewalks or pedestrian paths."
+      ],
+      "waypoint_order": []
+    }
+  ],
+  "status": "OK"
+}
