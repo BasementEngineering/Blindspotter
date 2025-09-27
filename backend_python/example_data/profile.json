@@ -1,0 +1,191 @@
+{
+    "name": "Renate Müller",
+    "description": "Eine Rentnerin mit eingeschränkter Mobilität.",
+    "persona_tags": {
+        "age": 30,
+        "occupation": "Keine",
+        "stadtteil": "61 Innenstdt",
+        "main_mode_of_transport": "car"
+    },
+    "preferences": {
+        "transportation_modes": [
+            "driving",
+            "walking",
+            "transit"
+        ],
+        "max_walking_distance_km": 2,
+        "travel_time_importance": "high"
+    },
+    "daily_routines": [
+        {
+            "arrival_time": "07:30",
+            "activity": "Leave home",
+            "location": "home"
+        },
+        {
+            "arrival_time": "08:00",
+            "activity": "Go to work",
+            "location": "office"
+        },
+        {
+            "arrival_time": "18:00",
+            "activity": "gym",
+            "location": "gym"
+        },
+        {
+            "arrival_time": "20:00",
+            "activity": "Arrive at home",
+            "location": "home"
+        }
+    ],
+    "points_of_interest": {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        7.6261347,
+                        51.9606649
+                    ]
+                },
+                "properties": {
+                    "name": "office",
+                    "adress": "Musterstraße 1, 12345 City"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        7.622539,
+                        51.9589386
+                    ]
+                },
+                "properties": {
+                    "name": "gym"
+                }
+            },
+            {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [
+                        7.6261,
+                        51.9607
+                    ]
+                },
+                "properties": {
+                    "name": "home"
+                }
+            }
+        ]
+    },
+    "processed_scenarios": [
+        [
+            {
+                "name": "Normal",
+                "scenario_id": "no_interruptions",
+                "trips": [
+                    {
+                        "id": "trip1",
+                        "origin": "Point of Interest A",
+                        "destination": "Point of Interest B",
+                        "departure_time": "2024-07-01T08:00:00Z",
+                        "arrival_time": "2024-07-01T09:00:00Z",
+                        "mode": "car",
+                        "is_possible": true,
+                        "duration": {
+                            "minutes": 15,
+                            "delta_minutes": 0,
+                            "delta_relative": 0.0
+                        },
+                        "distance": {
+                            "km": 12.0,
+                            "delta_km": 0.0,
+                            "delta_relative": 0.0
+                        },
+                        "polylines": [
+                            "atl~F`}{uOwnE`]qsB~tBjpBhbEgeBjuD",
+                            "_zb|Hmqpm@~ALL?n@D"
+                        ]
+                    },
+                    {
+                        "id": "trip2",
+                        "origin": "Point of Interest B",
+                        "destination": "Point of Interest C",
+                        "departure_time": "2024-07-01T08:00:00Z",
+                        "arrival_time": "2024-07-01T09:00:00Z",
+                        "mode": "car",
+                        "is_possible": true,
+                        "duration": {
+                            "minutes": 15,
+                            "delta_minutes": 0,
+                            "delta_relative": 0.0
+                        },
+                        "distance": {
+                            "km": 12.0,
+                            "delta_km": 0.0,
+                            "delta_relative": 0.0
+                        },
+                        "polylines": [
+                            "atl~F`}{uOwnE`]qsB~tBjpBhbEgeBjuD"
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Keine Bushaltestelle in der Nähe",
+                "scenario_id": "no_bus_stop",
+                "trips": [
+                    {
+                        "id": "trip1",
+                        "origin": "Point of Interest A",
+                        "destination": "Point of Interest B",
+                        "departure_time": "2024-07-01T08:00:00Z",
+                        "arrival_time": "2024-07-01T09:30:00Z",
+                        "mode": "car",
+                        "is_possible": true,
+                        "duration": {
+                            "minutes": 30,
+                            "delta_minutes": 15,
+                            "delta_relative": 1.0
+                        },
+                        "distance": {
+                            "km": 15.0,
+                            "delta_km": 3.0,
+                            "delta_relative": 0.25
+                        },
+                        "polylines": [
+                            "atl~F`}{uOwnE`]qsB~tBjpBhbEgeBjuD"
+                        ]
+                    },
+                    {
+                        "id": "trip2",
+                        "origin": "Point of Interest B",
+                        "destination": "Point of Interest C",
+                        "departure_time": "2024-07-01T08:00:00Z",
+                        "arrival_time": "2024-07-01T09:30:00Z",
+                        "mode": "car",
+                        "is_possible": true,
+                        "duration": {
+                            "minutes": 30,
+                            "delta_minutes": 15,
+                            "delta_relative": 1.0
+                        },
+                        "distance": {
+                            "km": 15.0,
+                            "delta_km": 3.0,
+                            "delta_relative": 0.25
+                        },
+                        "polylines": [
+                            "atl~F`}{uOwnE`]qsB~tBjpBhbEgeBjuD"
+                        ]
+                    }
+                ]
+            }
+        ]
+    ]
+}
