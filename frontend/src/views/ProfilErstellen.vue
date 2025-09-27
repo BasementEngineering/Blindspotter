@@ -1,6 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+interface ProfilDaten {
+  name: string;
+  description: string;
+  age: number | undefined;
+  stadtteil: string | undefined;
+  main_mode: string | undefined;
+  transportation_modes: string[];
+  max_walking_distance_km: number | undefined;
+}
+
+const emit = defineEmits<{
+  update: [daten: ProfilDaten]
+}>();
+
 const stadtteile = ["1 Teilbereich Altstadt", "11 Aegidii", "12 Überwasser", "13 Dom", "14 Buddenturm", "1-4 Münster-Mitte", "15 Martini", "2 Teilbereich Innenstadtring", "21 Pluggendorf", "22 Josef", "23 Bahnhof", "24 Hansaplatz", "25 Mauritz-West", "26 Schlachthof", "27 Kreuz", "28 Neutor", "29 Schloss", "3 Teilbereich Mitte-Süd", "31 Aaseestadt", "32 Geist", "33 Schützenhof", "34 Düesberg", "4 Teilbereich Mitte-Nordost", "43 Hafen", "44 Herz-Jesu", "45 Mauritz-Mitte", "46 Rumphorst", "47 Uppenberg", "5 Münster-West", "51 Gievenbeck", "52 Sentrup", "54 Mecklenbeck", "56 Albachten", "57 Roxel", "58 Nienberge", "6 Münster-Nord", "61 Coerde", "62 Kinderhaus-Ost", "63 Kinderhaus-West", "68 Sprakel", "7 Münster-Ost", "71 Mauritz-Ost", "76 Gelmer-Dyckburg", "77 Handorf", "8 Münster-Südost", "81 Gremmendorf-West", "82 Gremmendorf-Ost", "86 Angelmodde", "87 Wolbeck", "9 Münster-Hiltrup", "91 Berg Fidel", "95 Hiltrup-Ost", "96 Hiltrup-Mitte", "97 Hiltrup-West", "98 Amelsbüren"];
 const verkehrsmittel = ["Fahrrad", "ÖPNV", "PKW / Mitfahrende", "Ohne (zu Fuß)"];
 
@@ -11,15 +25,27 @@ const stadtteil = ref<string>()
 const main_mode = ref<string>()
 const transportation_modes = ref<string[]>(["Ohne (zu Fuß)"])
 const max_walking_distance_km = ref<number>()
+
+function emitUpdate() {
+  emit('update', {
+    name: name.value,
+    description: description.value,
+    age: age.value,
+    stadtteil: stadtteil.value,
+    main_mode: main_mode.value,
+    transportation_modes: transportation_modes.value,
+    max_walking_distance_km: max_walking_distance_km.value
+  });
+}
 </script>
 
 <template>
   <h2 class="title">Profil erstellen</h2>
-  <v-text-field label="Name" v-model="name" variant="outlined"></v-text-field>
-  <v-text-field label="Beschreibung" v-model="description" variant="outlined"></v-text-field>
-  <v-text-field label="Alter" v-model="age" type="number" min="1" variant="outlined"></v-text-field>
-  <v-select :items="stadtteile" label="Stadtteil" v-model="stadtteil" variant="outlined"></v-select>
-  <v-select :items="transportation_modes" label="Haupttransportmittel" v-model="main_mode" variant="outlined"></v-select>
+  <v-text-field label="Name" v-model="name" variant="outlined" @update:model-value="emitUpdate"></v-text-field>
+  <v-textarea label="Beschreibung" v-model="description" variant="outlined" @update:model-value="emitUpdate"></v-textarea>
+  <v-text-field label="Alter" v-model="age" type="number" min="1" variant="outlined" @update:model-value="emitUpdate"></v-text-field>
+  <v-select :items="stadtteile" label="Stadtteil" v-model="stadtteil" variant="outlined" @update:model-value="emitUpdate"></v-select>
+  <v-select :items="transportation_modes" label="Haupttransportmittel" v-model="main_mode" variant="outlined" @update:model-value="emitUpdate"></v-select>
   <div class="transportmittel-checkboxes">
     <h4>Verfügbare Transportmittel</h4>
     <v-checkbox
@@ -30,14 +56,22 @@ const max_walking_distance_km = ref<number>()
       :value="mittel"
       :disabled="mittel === 'Ohne (zu Fuß)'"
       hide-details
+      color="primary"
+      @update:model-value="emitUpdate"
     ></v-checkbox>
   </div>
-  <v-text-field label="Maximale Gehdistanz (in km)" v-model="max_walking_distance_km" type="number" min="0.1" step="0.1" variant="outlined"></v-text-field>
+  <v-text-field label="Maximale Gehdistanz (in km)" v-model="max_walking_distance_km" type="number" min="0.1" step="0.1" variant="outlined" @update:model-value="emitUpdate"></v-text-field>
 </template>
 
 <style scoped>
+.title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .transportmittel-checkboxes {
   margin: 16px 0;
+  text-align: left;
 }
 
 .transportmittel-checkboxes h4 {
@@ -46,4 +80,5 @@ const max_walking_distance_km = ref<number>()
   font-size: 16px;
   font-weight: 400;
 }
+
 </style>
