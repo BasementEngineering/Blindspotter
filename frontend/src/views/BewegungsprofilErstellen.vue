@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import TagesablaufErstellen from './TagesablaufErstellen.vue';
 
 interface Bewegungsprofil {
   startzeit: string;
@@ -7,58 +8,46 @@ interface Bewegungsprofil {
   name: string;
 }
 
-const start = ref<Bewegungsprofil>({
-  startzeit: '',
-  ort: '',
-  name: ''
+const tagesablaufDaten = ref<{
+  start: Bewegungsprofil;
+  ende: Bewegungsprofil;
+  tagesablauf: Bewegungsprofil[];
+}>({
+  start: { startzeit: '', ort: '', name: '' },
+  ende: { startzeit: '', ort: '', name: '' },
+  tagesablauf: []
 });
-const ende = ref<Bewegungsprofil>({
-  startzeit: '',
-  ort: start.value.ort,
-  name: start.value.name
-});
-const tagesablauf = ref<Bewegungsprofil[]>([]);
 
-function ortHinzufuegen() {
- tagesablauf.value.push({
-   startzeit: '',
-   ort: '',
-   name: ''
- })
+function onTagesablaufUpdate(daten: {
+  start: Bewegungsprofil;
+  ende: Bewegungsprofil;
+  tagesablauf: Bewegungsprofil[];
+}) {
+  tagesablaufDaten.value = daten;
 }
 
-function ortLoeschen(index: number) {
-  tagesablauf.value.splice(index, 1);
+function profilAbschicken() {
+
+}
+
+function getDto() {
+  return JSON.stringify({
+    daily_routines: {
+      start: tagesablaufDaten.value.start,
+      ende: tagesablaufDaten.value.ende,
+      ablauf: tagesablaufDaten.value.tagesablauf
+    }
+  })
 }
 </script>
 
 <template>
   <div class="page-center">
-    <div class="ablauf-container">
-      <h1 class="title">Bewegungsprofil erstellen</h1>
-      <div class="start">
-        <h3>Start</h3>
-        <v-text-field v-model="start.startzeit" label="Startzeit (HH:mm)" class="startzeit" hide-details variant="outlined"></v-text-field>
-        <v-text-field v-model="start.name" label="Name" class="name" hide-details variant="outlined"></v-text-field>
-        <v-text-field v-model="start.ort" label="Adresse" class="ort" hide-details variant="outlined"></v-text-field>
-        <v-btn variant="tonal" rounded="md" class="delete invisible"><v-icon>mdi-close-thick</v-icon></v-btn>
-      </div>
-      <div v-for="(ablauf, index) in tagesablauf" :key="index" class="ablauf-item">
-        <h3>{{ index + 1 }}</h3>
-        <v-text-field v-model="ablauf.startzeit" label="Startzeit (HH:mm)" class="startzeit" hide-details variant="outlined"></v-text-field>
-        <v-text-field v-model="ablauf.name" label="Name" class="name" hide-details variant="outlined"></v-text-field>
-        <v-text-field v-model="ablauf.ort" label="Adresse" class="ort" hide-details variant="outlined"></v-text-field>
-        <v-btn variant="tonal" rounded="md" class="delete" @click="ortLoeschen(index)"><v-icon>mdi-close-thick</v-icon></v-btn>
-      </div>
+    <div class="container">
+      <h1>Bewegungsprofil erstellen</h1>
+      <TagesablaufErstellen @update="onTagesablaufUpdate" />
       <div class="add">
-        <v-btn icon="$plus" color="primary" @click="ortHinzufuegen"></v-btn>
-      </div>
-      <div class="ende">
-        <h3>Ende</h3>
-        <v-text-field v-model="ende.startzeit" label="Startzeit (HH:mm)" class="startzeit" hide-details variant="outlined"></v-text-field>
-        <v-text-field readonly v-model="start.name" label="Name" class="name" hide-details variant="outlined"></v-text-field>
-        <v-text-field readonly v-model="start.ort" label="Adresse" class="ort" hide-details variant="outlined"></v-text-field>
-        <v-btn variant="tonal" rounded="md" class="delete invisible"><v-icon>mdi-close-thick</v-icon></v-btn>
+        <v-btn color="primary" size="large" @click="profilAbschicken">Profil abschicken</v-btn>
       </div>
     </div>
   </div>
@@ -72,7 +61,7 @@ function ortLoeschen(index: number) {
   height: 100vh;
   width: 100%;
 
-  .ablauf-container {
+  .container {
     display: flex;
     flex-direction: column;
     padding: 24px;
@@ -82,49 +71,11 @@ function ortLoeschen(index: number) {
     max-height: 80vh;
     overflow-y: auto;
 
-    .title {
-      margin-bottom: 20px;
-      text-align: center;
-    }
+    text-align: center;
 
     .add {
       margin: 15px 0;
       align-self: center;
-    }
-
-    .start, .ende, .ablauf-item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-
-      h3 {
-        margin-right: 15px;
-        width: 50px;
-        text-align: right;
-      }
-
-      .v-input {
-        margin: 10px 5px;
-      }
-
-      .delete {
-        height: 56px;
-        width: 56px;
-      }
-
-      .invisible {
-        visibility: hidden;
-      }
-
-      .startzeit {
-        width: 20%
-      }
-      .name {
-        width: 30%;
-      }
-      .ort {
-        width: 50%;
-      }
     }
   }
 }
