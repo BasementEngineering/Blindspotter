@@ -1,0 +1,4 @@
+debug/*
+input/*
+output/*
+*.pyc

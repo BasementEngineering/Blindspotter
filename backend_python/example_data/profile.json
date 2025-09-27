@@ -1,0 +1,83 @@
+{
+    "name": "Max Mustermann",
+    "description": "A software developer living in City.",
+    "persona_tags": {
+        "age":30,
+        "occupation": "In Ausbildung", // Erwebstätig, Rentner, Keine
+        "stadtteil": "61 Innenstdt",
+        "main_mode": "car" // car, bike, public_transport, walking
+    },
+    "preferences":
+    {
+        "transportation_modes": ["driving", "walking", "transit"],
+        "max_walking_distance_km": 2,
+        "travel_time_importance": "high"
+    },
+    "daily_routines": [
+        {
+            "arrival_time": "07:30",
+            "activity": "Leave home",
+            "location": "home"
+        },
+        {
+            "arrival_time": "08:00",
+            "activity": "Go to work",
+            "location": "office"
+        },
+        {
+            "arrival_time": "12:00",
+            "activity": "gym",
+            "location": "gym"
+        },
+        {
+            "arrival_time": "13:00",
+            "activity": "Arrive at home",
+            "location": "home"
+        }
+    ],
+    "points_of_interest":{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.6261347,
+                    51.9606649
+                ]
+            },
+            "properties": {
+                "name": "office",
+                "adress": "Musterstraße 1, 12345 City"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.622539,
+                    51.9589386
+                ]
+            },
+            "properties": {
+                "name": "gym"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    7.6261,
+                    51.9607
+                ]
+            },
+            "properties": {
+                "name": "home"
+            }
+        }
+    ]
+}
+}
