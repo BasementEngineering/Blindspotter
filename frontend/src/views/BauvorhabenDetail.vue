@@ -237,17 +237,21 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import L from 'leaflet';
 import { mockBauvorhaben } from '@/data/mockBauvorhaben';
 import type { Bauvorhaben } from '@/interfaces/BauvorhabenInterface';
 import BewegungsprofilVergleich from '@/components/BewegungsprofilVergleich.vue';
+import { useSSE } from '@/composables/useSSE';
 
 const route = useRoute();
 const router = useRouter();
 const mapContainer = ref<HTMLElement>();
 let map: L.Map | null = null;
+
+// SSE Connection
+const { connectionStatus, messages, latestMessage, connect } = useSSE();
 
 // Modal State für Bewegungsprofil Vergleich
 const bewegungsprofilModalOpen = ref(false);
@@ -506,11 +510,23 @@ const getImpactText = (level?: string) => {
   }
 };
 
+// Watch for new SSE messages
+watch(latestMessage, (newMessage) => {
+  if (newMessage) {
+    console.log('SSE message:', newMessage)
+    // Handle the message data here
+    // For example, update people statistics, show notifications, etc.
+  }
+})
+
 onMounted(() => {
   if (bauvorhaben.value) {
     // Kurze Verzögerung für DOM-Rendering
     setTimeout(initializeMap, 100);
   }
+
+  // Connect to SSE
+  connect();
 });
 </script>
 
