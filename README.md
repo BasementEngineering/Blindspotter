@@ -1,5 +1,14 @@
 # Blindspotter
+Blindspotter is a tool that enables planners to view local planning descisions through the lens of people living in the affected area. 
+**Persona Based Impact Evaluation**
+The tool allows planners to use predefined or create new personas to simulate the impact of planning decisions on different demographics. This helps to identify potential issues and ensure that planning decisions are inclusive and considerate of all community members.
+**Community Sourcing of Personas**
+Furthermore, Blindspotter allows the planner to involve the local community in the planning process by sharing their personas. This helps to ensure that the planning decisions are aligned with the needs and preferences of the community.
+**Bias Mitigation and Data Based Impact Quantification**
+Our tool also allows to connect the personas to demographic data, to quantify the amount of people, the specific persona applies to. This helps to mitigate bias and ensure that planning decisions are based on data and evidence, while still allowing planners to understand individual perspectives.
 
+
+## Tech Stack
 A full-stack application with Vue.js frontend and Bun/Hono backend, featuring functional programming patterns with Purify-TS.
 
 ## 🚀 Quick Start
