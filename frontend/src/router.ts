@@ -14,6 +14,7 @@ import StartScreen from '@/views/StartScreen.vue';
 import BauvorhabenAuswahl from '@/views/BauvorhabenAuswahl.vue';
 import BauvorhabenDetail from '@/views/BauvorhabenDetail.vue';
 import BauvorhabenHinzufuegen from '@/views/BauvorhabenHinzufuegen.vue';
+import BewegungsprofilErstellen from '@/views/BewegungsprofilErstellen.vue';
 
 // Pinia Store
 
@@ -41,6 +42,11 @@ const routes: RouteRecordRaw[] = [
     path: '/bauvorhaben-hinzufuegen',
     name: 'BauvorhabenHinzufuegen',
     component: BauvorhabenHinzufuegen
+  },
+  {
+    path: '/bewegungsprofil-erstellen',
+    name: 'BewegungsProfilErstellen',
+    component: BewegungsprofilErstellen
   },
   {
     path: '/about',
