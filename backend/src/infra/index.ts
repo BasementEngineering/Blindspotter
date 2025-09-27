@@ -3,6 +3,7 @@ import events from "@routes/events";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { serveStatic } from "hono/bun";
+import profile from "@routes/profile";
 
 const app = new Hono()
 
@@ -15,6 +16,7 @@ app.use('/api/events/*', cors({
 
 // API routes
 app.route('/api/hello', hello)
+app.route('/api/profile', profile)
 app.route('/api/events', events)
 
 // Serve static files from public directory

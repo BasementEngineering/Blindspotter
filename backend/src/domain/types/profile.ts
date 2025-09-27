@@ -4,23 +4,75 @@ export interface Coordinates {
   longitude: number
 }
 
+
+
+export interface CreateProfileRequest {
+  name: string,
+  userId: string,
+  description: string,
+  personaTags: ProfilePersona,
+  daily_routines: DailyRoutines
+}
+
+export interface DailyRoutines {
+  start: Bewegungsprofil,
+  ende: Bewegungsprofil,
+  tagesablauf: Bewegungsprofil[]
+}
+
+export interface Bewegungsprofil {
+  startzeit: string;
+  ort: string;
+  name: string;
+}
+
+export interface ProfilePersona {
+  age: number
+  occupation: string
+  stadtteil: string
+  mainMode: string
+}
+
 export interface PointOfInterest {
+  type: string
+  features: PointOfInterestFeature[]
+  coordinates: Coordinates
+}
+
+export interface PointOfInterestFeature {
+  type: string
+  geometry: PointOfInterestFeatureGeometry,
+  properties: PointOfInterestFeatureProperty
+}
+
+export interface PointOfInterestFeatureProperty {
   name: string
   address: string
+}
+
+export interface PointOfInterestFeatureGeometry {
+  type: string
   coordinates: Coordinates
 }
 
 export interface DailyRoutineItem {
-  time: string
-  activity: string
+  startZeit: string
+  name: string
   location?: string
+}
+
+export interface Preferences {
+  transportationModes: string[]
+  maxWalkingDistanceInKm: number,
+  travelTimeImportance: string
 }
 
 export interface Profile {
   name: string
-  age: number
+  personaTags: ProfilePersona,
+  preferences: Preferences,
   description: string
-  pointsOfInterest: PointOfInterest[]
+  pointsOfInterest: PointOfInterest
   dailyRoutines: DailyRoutineItem[]
 }
 
