@@ -20,7 +20,15 @@ const ende = ref<Bewegungsprofil>({
 const tagesablauf = ref<Bewegungsprofil[]>([]);
 
 function ortHinzufuegen() {
+ tagesablauf.value.push({
+   startzeit: '',
+   ort: '',
+   name: ''
+ })
+}
 
+function ortLoeschen(index: number) {
+  tagesablauf.value.splice(index, 1);
 }
 </script>
 
@@ -33,11 +41,14 @@ function ortHinzufuegen() {
         <v-text-field v-model="start.startzeit" label="Startzeit (HH:mm)" class="startzeit" hide-details variant="outlined"></v-text-field>
         <v-text-field v-model="start.name" label="Name" class="name" hide-details variant="outlined"></v-text-field>
         <v-text-field v-model="start.ort" label="Adresse" class="ort" hide-details variant="outlined"></v-text-field>
+        <v-btn variant="tonal" rounded="md" class="delete invisible"><v-icon>mdi-close-thick</v-icon></v-btn>
       </div>
       <div v-for="(ablauf, index) in tagesablauf" :key="index" class="ablauf-item">
+        <h3>{{ index + 1 }}</h3>
         <v-text-field v-model="ablauf.startzeit" label="Startzeit (HH:mm)" class="startzeit" hide-details variant="outlined"></v-text-field>
         <v-text-field v-model="ablauf.name" label="Name" class="name" hide-details variant="outlined"></v-text-field>
         <v-text-field v-model="ablauf.ort" label="Adresse" class="ort" hide-details variant="outlined"></v-text-field>
+        <v-btn variant="tonal" rounded="md" class="delete" @click="ortLoeschen(index)"><v-icon>mdi-close-thick</v-icon></v-btn>
       </div>
       <div class="add">
         <v-btn icon="$plus" color="primary" @click="ortHinzufuegen"></v-btn>
@@ -47,6 +58,7 @@ function ortHinzufuegen() {
         <v-text-field v-model="ende.startzeit" label="Startzeit (HH:mm)" class="startzeit" hide-details variant="outlined"></v-text-field>
         <v-text-field readonly v-model="start.name" label="Name" class="name" hide-details variant="outlined"></v-text-field>
         <v-text-field readonly v-model="start.ort" label="Adresse" class="ort" hide-details variant="outlined"></v-text-field>
+        <v-btn variant="tonal" rounded="md" class="delete invisible"><v-icon>mdi-close-thick</v-icon></v-btn>
       </div>
     </div>
   </div>
@@ -65,8 +77,10 @@ function ortHinzufuegen() {
     flex-direction: column;
     padding: 24px;
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
     border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
 
     .title {
       margin-bottom: 20px;
@@ -85,10 +99,21 @@ function ortHinzufuegen() {
 
       h3 {
         margin-right: 15px;
+        width: 50px;
+        text-align: right;
       }
 
       .v-input {
-        margin: 0 5px;
+        margin: 10px 5px;
+      }
+
+      .delete {
+        height: 56px;
+        width: 56px;
+      }
+
+      .invisible {
+        visibility: hidden;
       }
 
       .startzeit {
