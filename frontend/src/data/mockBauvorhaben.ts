@@ -5,17 +5,17 @@ export const mockBauvorhaben: Bauvorhaben[] = [
     id: '1',
     name: 'Neubau Wohnquartier Stadtmitte',
     beschreibung: 'Modernes Wohnquartier mit 150 Wohneinheiten, Tiefgarage und Grünflächen im Zentrum der Stadt.',
-    adresse: 'Hauptstraße 45-55, 10115 Berlin',
+    adresse: 'Prinzipalmarkt 10, 48143 Münster',
     koordinaten: {
-      lat: 52.5200,
-      lng: 13.4050
+      lat: 51.9625,
+      lng: 7.6257
     },
     status: 'in_bau',
     bauzeit: {
       beginn: '2024-03-01',
       ende: '2026-08-31'
     },
-    bauherr: 'Stadtentwicklung Berlin GmbH',
+    bauherr: 'Stadtentwicklung Münster GmbH',
     projekttyp: 'wohnbau',
     groesse: '12.500 m²',
     kosten: '45 Mio. €'
@@ -24,17 +24,17 @@ export const mockBauvorhaben: Bauvorhaben[] = [
     id: '2',
     name: 'Sanierung Rathaus',
     beschreibung: 'Umfassende Sanierung des historischen Rathauses mit energetischer Modernisierung und Barrierefreiheit.',
-    adresse: 'Marktplatz 1, 10115 Berlin',
+    adresse: 'Schlossplatz 15, 48149 Münster',
     koordinaten: {
-      lat: 52.5180,
-      lng: 13.4020
+      lat: 51.9641,
+      lng: 7.6113
     },
     status: 'geplant',
     bauzeit: {
       beginn: '2025-01-15',
       ende: '2025-12-20'
     },
-    bauherr: 'Stadt Berlin',
+    bauherr: 'Stadt Münster',
     projekttyp: 'oeffentlich',
     groesse: '3.200 m²',
     kosten: '8,5 Mio. €'
