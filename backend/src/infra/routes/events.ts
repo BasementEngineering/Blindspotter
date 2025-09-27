@@ -1,5 +1,4 @@
 import { Hono } from "hono"
-import { streamSSE } from "hono/streaming"
 
 const events = new Hono()
 
@@ -8,37 +7,57 @@ const sseConnections = new Map<string, any>()
 
 // SSE endpoint for clients to connect
 events.get('/stream', (c) => {
-  return streamSSE(c, async (stream) => {
-    const connectionId = Date.now().toString() + Math.random().toString(36)
+  const connectionId = Date.now().toString() + Math.random().toString(36)
 
-    // Store this connection
-    sseConnections.set(connectionId, stream)
+  // Create readable stream
+  const stream = new ReadableStream({
+    start(controller) {
+      // Send initial connection message
+      const connectMsg = `event: connection\ndata: ${JSON.stringify({
+        type: 'connected',
+        timestamp: new Date().toISOString(),
+        connectionId
+      })}\n\n`
 
-    // Send initial connection message
-    await stream.writeSSE({
-      data: JSON.stringify({ type: 'connected', timestamp: new Date().toISOString(), connectionId }),
-      event: 'connection'
-    })
+      controller.enqueue(new TextEncoder().encode(connectMsg))
 
-    // Keep connection alive with heartbeat
-    const heartbeat = setInterval(async () => {
-      try {
-        await stream.writeSSE({
-          data: JSON.stringify({ type: 'heartbeat', timestamp: new Date().toISOString() }),
-          event: 'heartbeat'
-        })
-      } catch (error) {
-        // Connection closed, clean up
-        clearInterval(heartbeat)
+      // Send heartbeat every 30 seconds
+      const heartbeat = setInterval(() => {
+        try {
+          const heartbeatMsg = `event: heartbeat\ndata: ${JSON.stringify({
+            type: 'heartbeat',
+            timestamp: new Date().toISOString()
+          })}\n\n`
+
+          controller.enqueue(new TextEncoder().encode(heartbeatMsg))
+        } catch (error) {
+          clearInterval(heartbeat)
+          controller.close()
+        }
+      }, 30000)
+
+      // Store connection for hook messages
+      sseConnections.set(connectionId, {
+        controller,
+        heartbeat
+      })
+    },
+
+    cancel() {
+      const connection = sseConnections.get(connectionId)
+      if (connection) {
+        clearInterval(connection.heartbeat)
         sseConnections.delete(connectionId)
       }
-    }, 30000) // 30 seconds heartbeat
+    }
+  })
 
-    // Clean up when connection closes
-    stream.onAbort(() => {
-      clearInterval(heartbeat)
-      sseConnections.delete(connectionId)
-    })
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive'
+    }
   })
 })
 
@@ -51,13 +70,10 @@ events.post('/hook', async (c) => {
     const messageId = Date.now().toString()
     const deadConnections: string[] = []
 
-    for (const [connectionId, stream] of sseConnections.entries()) {
+    for (const [connectionId, connection] of sseConnections.entries()) {
       try {
-        await stream.writeSSE({
-          data: JSON.stringify(data),
-          event: 'message',
-          id: messageId
-        })
+        const messageData = `event: message\nid: ${messageId}\ndata: ${JSON.stringify(data)}\n\n`
+        connection.controller.enqueue(new TextEncoder().encode(messageData))
       } catch (error) {
         // Mark connection for removal
         deadConnections.push(connectionId)

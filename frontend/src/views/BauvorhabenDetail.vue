@@ -243,11 +243,15 @@ import L from 'leaflet';
 import { mockBauvorhaben } from '@/data/mockBauvorhaben';
 import type { Bauvorhaben } from '@/interfaces/BauvorhabenInterface';
 import BewegungsprofilVergleich from '@/components/BewegungsprofilVergleich.vue';
+import { useSSE } from '@/composables/useSSE';
 
 const route = useRoute();
 const router = useRouter();
 const mapContainer = ref<HTMLElement>();
 let map: L.Map | null = null;
+
+// SSE Connection
+const { connectionStatus, connect } = useSSE();
 
 // Modal State für Bewegungsprofil Vergleich
 const bewegungsprofilModalOpen = ref(false);
@@ -511,6 +515,9 @@ onMounted(() => {
     // Kurze Verzögerung für DOM-Rendering
     setTimeout(initializeMap, 100);
   }
+
+  // Connect to SSE
+  connect();
 });
 </script>
 
